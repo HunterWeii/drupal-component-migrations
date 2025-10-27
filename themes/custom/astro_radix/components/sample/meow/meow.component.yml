@@ -1,0 +1,7 @@
+name: "Meow"
+group: atoms
+description: "A component with an Meow"
+status: stable
+props:
+  people:
+    type: string

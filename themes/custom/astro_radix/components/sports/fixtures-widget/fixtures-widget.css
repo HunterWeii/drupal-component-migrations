@@ -1,0 +1,186 @@
+.sa-fixture-matchwidget {
+  container-name: sa-fixture-match-widget;
+  container-type: inline-size;
+}
+
+@media (max-width: 960px) {
+  .sa-fixture-matchwidget {
+    width: 100dvw !important;
+    width: 100vw !important;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    left: 50%;
+    position: relative;
+    right: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  @media (max-width: 960px) {
+    .sa-fixture-matchwidget {
+      width: 100% !important;
+      margin-left: 0;
+      margin-right: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+.sa-fixture-matchwidget_sponsor {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  min-height: 44px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+@media (max-width: 960px) {
+  .sa-fixture-matchwidget_sponsor {
+    border-radius: 0;
+  }
+}
+
+.sa-fixture-matchwidget_sponsor + .sa-fixture-matchwidget_content {
+  border-radius: unset;
+}
+
+.sa-fixture-matchwidget_content {
+  background-color: var(--sport-match-widget-content-backgroundColor, #e7f1fd);
+  padding: var(--sport-match-widget-content-padding, 24px 16px);
+  border-radius: 8px;
+}
+
+@media (max-width: 960px) {
+  .sa-fixture-matchwidget_content {
+    border-radius: 0;
+  }
+}
+
+.sa-fixture-matchwidget_fixtureContainer {
+  min-height: 80px;
+}
+
+.sa-fixture-matchwidget .sa-fixture {
+  box-shadow: var(
+    --sport-match-widget-fixture-boxShadow,
+    0px 4px 6px -4px #0000001a,
+    0px 10px 15px -3px #0000001a
+  );
+}
+
+.sa-fixture-matchwidget .fixtureChannels {
+  gap: 4px;
+}
+
+@container sa-fixture-match-widget (min-width: 150px) and (max-width: 300px) {
+  .sa-fixture-matchwidget .fixtureTeam_teamname {
+    width: 148px;
+  }
+}
+
+.sa-fixture-matchwidget_emptyContainer {
+  justify-content: center;
+  min-height: 80px;
+}
+
+.sa-fixture-matchwidget_widgetTitle {
+  font-size: 24px !important;
+}
+
+@media (min-width: 1024px) {
+  .sa-fixture-matchwidget_widgetTitle {
+    font-size: 28px !important;
+  }
+}
+
+/* --- Fixture component responsive overrides --- */
+@media (min-width: 768px) {
+  .sa-fixture-matchwidget .fixtureHeader {
+    padding: 8px;
+    min-height: 58px;
+  }
+
+  .sa-fixture-matchwidget .fixtureHeader_text {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .sa-fixture-matchwidget .fixtureHeaderMatchDetail_match {
+    gap: 8px;
+  }
+
+  .sa-fixture-matchwidget .fixtureHeaderMatchDetail_match_title {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .sa-fixture-matchwidget .fixtureHeaderMatchDetail_match_subtitle {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .sa-fixture-matchwidget .fixtureHeaderMatchDetail_avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .sa-fixture-matchwidget .fixtureHeaderMatchDetail_title {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .sa-fixture-matchwidget .fixtureHeaderMatchDetail_subtitle {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .sa-fixture-matchwidget .fixtureGroup_header {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .sa-fixture-matchwidget .fixtureContent_details {
+    width: 48px;
+  }
+
+  .sa-fixture-matchwidget .fixtureContent_teamdata {
+    padding: 16px 0 16px 8px;
+  }
+
+  .sa-fixture-matchwidget .fixtureTeam_teamname {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .sa-fixture-matchwidget .fixtureTeam_scorebox {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .sa-fixture-matchwidget .fixtureTeam_scoreindicator {
+    width: 8px;
+    height: 20px;
+  }
+
+  .sa-fixture-matchwidget .fixtureDetail_text {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .sa-fixture-matchwidget .topFixtureDetails_title {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .sa-fixture-matchwidget .topFixtureDetails_placeholder {
+    font-size: 14px;
+    line-height: 20px;
+    padding-right: 8px;
+  }
+}

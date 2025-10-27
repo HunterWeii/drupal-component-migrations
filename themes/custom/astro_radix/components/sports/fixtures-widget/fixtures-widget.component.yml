@@ -1,0 +1,29 @@
+name: "Fixtures Widget"
+description: "Fixture Widget to embed on Rail Widget"
+status: stable
+props:
+  sponsorConfig:
+    type: object
+    properties:
+      sponsor:
+        type: string
+  titleWrapperProps:
+    type: object
+    properties:
+      title:
+        type: string
+      showBottomLink:
+        type: boolean
+        default: true
+      bottomLinkProps:
+        type: object
+        properties:
+          href:
+            type: string
+          target:
+            enums: ["_blank", "_self"]
+          text:
+            type: string
+  fixtures:
+    type: array
+    default: []

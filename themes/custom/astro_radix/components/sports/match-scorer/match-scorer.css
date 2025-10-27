@@ -1,0 +1,84 @@
+.scoreboard ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.scoreboard {
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  gap: 16px;
+  color: var(--sport-scoreboard-content-fontColor, #fff);
+  background: var(--sport-scoreboard-content-bgColor, #04143c);
+}
+
+@media (min-width: 768px) {
+  .scoreboard {
+    gap: 24px;
+  }
+}
+
+.scoreboard_logo {
+  min-width: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.scoreboard_logo > img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .scoreboard_logo > img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .scoreboard_logo {
+    min-width: 168px;
+  }
+}
+
+.scoreboard_list {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.scoreboard_list > li {
+  margin-bottom: 8px;
+  display: flex;
+  gap: 4px;
+  text-align: right;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+  .scoreboard_list > li {
+    margin-bottom: 4px;
+  }
+}
+
+.scoreboard_list > li:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .scoreboard_list {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.scoreboard_list__away > li {
+  text-align: left;
+  flex-direction: row-reverse;
+}

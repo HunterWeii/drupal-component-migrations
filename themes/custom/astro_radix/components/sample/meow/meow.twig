@@ -1,0 +1,16 @@
+<div>
+  <h1 class="meow">
+    {% include 'astro_radix:meow-bello' with {
+      props: {
+        cat_name: 'Takezo'
+      }
+    } %}
+    <span>Meow ! </span>
+  </h1>
+  {% embed 'astro_radix:meow-lorem' %}{% endembed %}
+  {% embed 'astro_radix:meow-lorem' %}
+    {% block cat_pope %}
+      <span>Jesus Cat</span>
+    {% endblock %}
+  {% endembed %}
+</div>

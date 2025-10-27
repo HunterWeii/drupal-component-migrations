@@ -1,0 +1,15 @@
+.astro_content_message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.astro_content_message_text {
+  font-size: 14px;
+}
+
+@media (min-width: 1024px) {
+  .astro_content_message_text {
+    font-size: 16px;
+  }
+}

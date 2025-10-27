@@ -1,0 +1,30 @@
+{% set stat_translate = {
+  cornerKicks: 'Corners',
+  fouls: 'Fouls',
+  freekicks: 'Free Kicks',
+  offsides: 'Offsides',
+  passes: 'Passes',
+  passesAccuracy: 'Pass accuracy',
+  possession: 'Possession',
+  redCards: 'Red Cards',
+  shots: 'Shots',
+  shotsOnTarget: 'Shots on target',
+  tackles: 'Tackles',
+  yellowCards: 'Yellow Cards',
+}%}
+
+<div class="statistic">
+  <div class="statistic_table">
+    {% for stat_key, stat_content in homeTeam %}
+      {% set percentage = (stat_key == 'possession' or stat_key == 'passesAccuracy') ? '%' : '' %}
+      {% set home_content_value = stat_content %}
+      {% set away_content_value = awayTeam[stat_key] %}
+
+      <div class="statistic_row">
+        <span>{{ home_content_value }}{{ percentage }}</span>
+        <span>{{ stat_translate[stat_key] }}</span>
+        <span>{{ away_content_value }}{{ percentage }}</span>
+      </div>
+    {% endfor %}
+  </div>
+</div>

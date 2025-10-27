@@ -1,0 +1,38 @@
+.fixtureGroup_header {
+  background-color: var(--sport-fixture-group-backgroundColor, #f3e5fe);
+  min-height: 36px;
+  color: var(--sport-fixture-group-title-fontColor, #010414);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .fixtureGroup_header {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.fixtureGroup_groupLabel {
+  padding: 8px 16px;
+  background-color: var(--sport-fixture-group-label-fontColor, #f5f5f5);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+}
+
+.fixtureGroup_content {
+  border: 1px solid #f3e5fe;
+  border-top: unset;
+  overflow: hidden;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}

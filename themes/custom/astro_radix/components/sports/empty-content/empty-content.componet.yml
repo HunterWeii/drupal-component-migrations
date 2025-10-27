@@ -1,0 +1,6 @@
+name: "Empty Content"
+description: "Placeholder to show empty content message"
+status: Stable
+props:
+  message:
+    type: string

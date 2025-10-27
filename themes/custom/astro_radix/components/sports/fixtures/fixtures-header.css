@@ -1,0 +1,118 @@
+.fixtureHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sport-fixture-header-background, none);
+  background-color: var(--sport-fixture-header-backgroundColor, #08205c);
+  background-size: cover;
+  padding: 8px;
+  min-height: 58px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+@media (min-width: 768px) {
+  .fixtureHeader {
+    padding: 8px 24px;
+    min-height: 64px;
+  }
+}
+
+.fixtureHeader_text {
+  height: inherit;
+  color: var(--sport-fixture-header-title-fontColor, #fff);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 26px;
+}
+
+@media (min-width: 768px) {
+  .fixtureHeader_text {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+.fixtureHeaderMatchDetail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.fixtureHeaderMatchDetail_match {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .fixtureHeaderMatchDetail_match {
+    gap: 16px;
+  }
+}
+
+.fixtureHeaderMatchDetail_match_avatar {
+  width: 32px;
+  height: 32px;
+}
+
+@media (min-width: 768px) {
+  .fixtureHeaderMatchDetail_match_avatar {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.fixtureHeaderMatchDetail_match_avatarFallback {
+  display: none;
+  background-color: #eee;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+}
+
+@media (min-width: 768px) {
+  .fixtureHeaderMatchDetail_match_avatarFallback {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.fixtureHeaderMatchDetail_match_title {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 800;
+  color: var(--sport-fixture-header-title-fontColor, #fff);
+}
+
+@media (min-width: 768px) {
+  .fixtureHeaderMatchDetail_match_title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+.fixtureHeaderMatchDetail_match_subtitle {
+  color: var(--sport-fixture-header-title-fontColor, #fff);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .fixtureHeaderMatchDetail_match_subtitle {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.fixtureHeaderMatchDetail_link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.fixtureHeaderMatchDetail_link_icon {
+  color: var(--sport-fixture-header-title-fontColor, #fff);
+}

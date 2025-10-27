@@ -1,0 +1,79 @@
+.titleContent {
+  --title-content-title-font-color: var(--color-neutral-100);
+  --title-content-title-font-size: 28px;
+  --title-content-title-line-height: 32px;
+  --title-content-link-font-color: #0d3599;
+  --title-content-link-font-weight: 900;
+  --title-content-link-font-size: 16px;
+  --title-container-bottom-borderTop: 1px solid #484849;
+  --title-container-bottom-paddingTop: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (min-width: 480px) {
+  .titleContent {
+    --title-content-title-font-size: 28px;
+    --title-content-title-line-height: 34px;
+  }
+}
+
+.titleContent__sa {
+  --title-container-bottom-borderTop: 1px solid #484849;
+  --title-container-bottom-paddingTop: 16px;
+  --title-content-link-font-color: #0d3599;
+  --title-content-link-font-weight: 800;
+  --title-content-link-font-size: 16px;
+  --title-content-title-font-size: 24px;
+  --title-content-title-line-height: 30px;
+}
+
+@media (min-width: 480px) {
+  .titleContent__sa {
+    --title-content-title-font-size: 28px;
+    --title-content-title-line-height: 34px;
+  }
+}
+
+.titleContent_headerContainer_img {
+  width: 100%;
+  height: auto;
+  clear: both;
+}
+
+.titleContent_bodyContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.titleContent_titleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.titleContent_titleContainer__bottom {
+  display: flex;
+  justify-content: flex-end;
+  border-top: var(--title-container-bottom-borderTop, 1px solid #484849);
+  padding-top: var(--title-container-bottom-paddingTop, 8px);
+}
+
+.titleContent_title {
+  font-weight: 900;
+  font-size: var(--title-content-title-font-size, 24px);
+  line-height: var(--title-content-title-line-height, 34px);
+  color: var(--title-content-title-font-color, #010414);
+}
+
+.titleContent_link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--title-content-link-font-size);
+  font-weight: var(--title-content-link-font-weight);
+  color: var(--title-content-link-font-color);
+  text-decoration: none;
+}

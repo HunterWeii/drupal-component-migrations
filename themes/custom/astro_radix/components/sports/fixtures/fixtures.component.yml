@@ -1,0 +1,126 @@
+name: "Fixtures"
+description: "A Sport Fixtures Component"
+status: stable
+props:
+  fixtureHeader:
+    type: object
+    title: "Fixture Header"
+    properties:
+      fixtureHeaderMatchDetail:
+        type: object
+        title: "Fixture Header Match Details"
+        properties:
+          competitionLogo:
+            type: object
+            properties:
+              src: { type: string }
+              alt: { type: string }
+              width: { type: number }
+              height: { type: number }
+          competitionName: { type: string }
+          competitionLink:
+            type: object
+            properties:
+              href: { type: string }
+              isExternal: { type: boolean }
+      fixtureHeaderTitle: { type: string }
+      fixtureHeaderStyle: { type: string }
+  fixtureGroups:
+    type: array
+    title: "Fixture Group"
+    items:
+      type: object
+      properties:
+        fixtureGroupId: { type: string }
+        groupTitle: { type: string }
+        groupLabel: { type: string }
+        showGroupHeader: { type: boolean }
+        fixtures:
+          type: array
+          title: "Fixtures Content"
+          items:
+            type: object
+            properties:
+              matchId: { type: string }
+              matchLive: { type: string }
+              matchTime: { type: string }
+              matchDateTime: { type: string }
+              matchFormatDateTime: { type: string }
+              matchLink:
+                type: object
+                properties:
+                  matchDetailsLink: { type: string }
+                  isExternal: { type: boolean }
+                  gaParams:
+                    type: object
+                    additionalProperties: { type: string }
+              awayTeam:
+                type: object
+                title: "Fixture Content Team"
+                properties:
+                  isMatchEnd: { type: boolean }
+                  team:
+                    type: array
+                    items: { type: string }
+                  teamShortName:
+                    type: array
+                    items: { type: string }
+                  teamLogo:
+                    type: array
+                    items:
+                      type: object
+                      title: IFixtureTeamLogo
+                      properties:
+                        src: { type: string }
+                        alt: { type: string }
+                        width: { type: number }
+                        height: { type: number }
+                  scores:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type: { type: string, enum: ["goal", "penalty"] }
+                        score: { type: string }
+                        roundIndicator:
+                          type: string
+                          enum: ["win", "lose", "draw", "live", ""]
+                  scoreboxIndicator:
+                    type: string
+                    enum: ["win", "lose", "draw", "live", ""]
+                  useInternationalFlagSize: { type: boolean }
+              homeTeam:
+                $ref: "#/props/fixtureGroups/items/properties/fixtures/items/properties/awayTeam"
+              channels:
+                type: array
+                title: IFixtureChannel[]
+                items:
+                  type: object
+                  properties:
+                    href: { type: string }
+                    isExternal: { type: boolean }
+                    channelName: { type: string }
+                    channelLogo:
+                      type: object
+                      properties:
+                        src: { type: string }
+                        alt: { type: string }
+                        width: { type: number }
+                        height: { type: number }
+              hasScore: { type: boolean }
+              isMatchEnd: { type: boolean }
+  fixtureContentConfig:
+    type: object
+    properties:
+      showFixtureContentDetails:
+        type: boolean
+        default: true
+      showTopFixtureDetails:
+        type: boolean
+        default: false
+      scoreboard:
+        type: boolean
+        default: false
+      showFixtureContentDetailsAsTag:
+        type: boolean
+        default: false

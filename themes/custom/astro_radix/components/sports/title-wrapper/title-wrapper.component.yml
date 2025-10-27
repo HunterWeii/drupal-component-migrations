@@ -1,0 +1,18 @@
+name: "Title Wrapper"
+description: "Title Wrapper to wrap a content"
+status: stable
+props:
+  title:
+    type: string
+  showBottomLink:
+    type: boolean
+    default: true
+  bottomLinkProps:
+    type: object
+    properties:
+      href:
+        type: string
+      target:
+        enums: ["_blank", "_self"]
+      text:
+        type: string

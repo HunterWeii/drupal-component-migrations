@@ -1,0 +1,181 @@
+{% set showFixtureHeaderMatchDetail = true %}
+{% set showFixtureGroupHeader = true %}
+{% set showFixtureGroupLabel = false %}
+{% set showFixtureContentDetails = true %}
+{% set showTopFixtureDetails = false %}
+{% set isMatchNotStarted = false %}
+{% set showFixtureContentDetailsAsTag = false %}
+{% set isMatchEnd = true %}
+{% set isMatchOnGoing = false %}
+
+<div class="sa-fixture">
+  {# fixture header #}
+  <div class="fixtureHeader">
+    {% if showFixtureHeaderMatchDetail %}
+      <div class="fixtureHeaderMatchDetail">
+        <div class="fixtureHeaderMatchDetail_match">
+          <img
+            class="fixtureHeaderMatchDetail_match_avatar"
+            src="https://de-digital-fortress-img-assets.eco.astro.com.my/prod/b74e136d71d7092edc6e106b8e8683eb.png"
+            alt="Team logo"
+            width="56"
+            height="56"
+            style="display: inline-block;"
+          />
+          <span
+            class="fixtureHeaderMatchDetail_match_avatarFallback"
+            style="display: none;"
+          ></span>
+          <div>
+            <div class="fixtureHeaderMatchDetail_match_title">
+              English Premier League
+            </div>
+            <div class="fixtureHeaderMatchDetail_match_subtitle">
+              Gameweek 10 of 38
+            </div>
+          </div>
+        </div>
+        <a
+          class="fixtureHeaderMatchDetail_link"
+          href="https://example.com/competition"
+          target="_blank"
+        >
+          <i class="fixtureHeaderMatchDetail_link_icon fa fa-chevron-right">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" class="fixtureHeaderMatchDetail_link_icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
+          </i>
+        </a>
+      </div>
+    {% else %}
+      <div class="fixtureHeader_text">Gameweek 10 of 38</div>
+    {% endif %}
+  </div>
+
+  {# fixture group #}
+  <div class="fixtureGroup" data-component-id="fixture-group-1">
+    {% if showFixtureGroupHeader %}
+      <div class="fixtureGroup_header">Saturday, 01 Nov</div>
+    {% endif %}
+    
+    {% if showFixtureGroupLabel %}
+      <div class="fixtureGroup_groupLabel">Quarter Finals</div>
+    {% endif %}
+    
+    <div class="fixtureGroup_content">
+      {# Array of Fixtures Content #}
+      <div class="fixtureContent" data-fixture-matchdatetime="">
+        {% set fixture_tag %}
+          <span class="{{ showFixtureContentDetailsAsTag ? 'fixtureDetail_tag' : '' }} {{ isMatchEnd ? 'fixtureDetail_tag--fulltime' : ''}} {{ isMatchOnGoing ? 'fixtureDetail_tag--ongoing' : '' }}">
+            <span class="fixtureDetail_text {{ isMatchOngoing ? 'fixtureDetail_text--ongoing' : ''}}">
+              <span>FT</span>
+              {% if isMatchOnGoing %}
+                <span class="animation__blink">’</span>
+              {% endif %}
+            </span>
+          </span>
+        {% endset %}
+
+        {% if showFixtureContentDetails %}
+          <div class="fixtureContent_details">
+            {# fixture time details #}
+            {% if isMatchNotStarted %}
+              <span class="fixtureDetail_text">11:00 PM</span>
+            {% else %}
+              {{ fixture_tag }}
+            {% endif %}
+
+            {# fixture channel #}
+            <div class="fixtureChannels">
+              <a href="https://example.com/channel2" target="_self">
+                <img
+                  class="fixtureChannels_squareimg"
+                  src="https://de-digital-fortress-stg-assets.eco.astro.com.my/staging/a1e5c4229289adaa4999d85cb7353f9a.png"
+                  alt="channel-logo"
+                  width="32"
+                  height="32"
+                />
+              </a>
+              <a href="https://example.com/channel3" target="_blank">
+                <img
+                  class="fixtureChannels_img"
+                  src="https://de-digital-fortress-stg-assets.eco.astro.com.my/staging/047bac73ee945fe3e1d387f29a15c556.png"
+                  alt="channel-logo"
+                  width="40"
+                  height="24"
+                />
+              </a>
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="fixtureContent_teamdata fixtureContent_teamdata--no-pointer">
+          {% if showTopFixtureDetails %}
+            <div class="topFixtureDetails">
+              <span class="topFixtureDetails_title">Rabu, 17 Sept</span>
+              <span class="topFixtureDetails_placeholder">
+                {{ fixture_tag }}
+              </span>
+            </div>
+          {% endif %}
+          
+          {# home #}
+          <div class="fixtureTeam">
+            <div class="fixtureTeam_teams">
+              {# array #}
+              <div class="fixtureTeam_team">
+                <img
+                  class="fixtureTeam_teamImg"
+                  src="https://img.thesports.com/football/team/d39ce586fd7278342dde33b3090b3f75.png"
+                  alt="team-logo"
+                  width="40"
+                  height="40"
+                  style="display: inline;"
+                />
+                <span
+                  class="fixtureTeam_teamImgFallback"
+                  style="width: 40px; height: 40px; display: none;"
+                ></span>
+                <span class="fixtureTeam_teamName">Manchester United</span>
+              </div>
+            </div>
+
+            <div class="fixtureTeam_score">
+              {# array #}
+              <div class="fixtureTeam_scorebox fixtureTeam_scorebox--roundwin">4</div>
+
+              <!-- ScoreboxIndicator placeholder -->
+              <div class="fixtureTeam_scoreindicator fixtureTeam_scoreindicator--win"></div>
+            </div>
+          </div>
+
+          {# away #}
+          <div class="fixtureTeam">
+            <div class="fixtureTeam_teams">
+              <div class="fixtureTeam_team">
+                <img
+                  class="fixtureTeam_teamImg"
+                  src="https://img.thesports.com/football/team/9b43a690d5a09f1e319f036821e8e1d3.png"
+                  alt="team-logo"
+                  width="40"
+                  height="40"
+                  style="display: inline;"
+                />
+                <span
+                  class="fixtureTeam_teamImgFallback"
+                  style="width: 40px; height: 40px; display: none;"
+                ></span>
+                <span class="fixtureTeam_teamName">Brighton Hove Albion</span>
+              </div>
+            </div>
+
+            <div class="fixtureTeam_score">
+              <div class="fixtureTeam_scorebox fixtureTeam_scorebox--roundlose">2</div>
+
+              <!-- ScoreboxIndicator placeholder -->
+              <div class="fixtureTeam_scoreindicator"></div>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>

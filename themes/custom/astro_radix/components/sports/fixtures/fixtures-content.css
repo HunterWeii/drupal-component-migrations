@@ -1,0 +1,369 @@
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animation__blink {
+  animation-name: blink;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+/* Fixture Content */
+
+.fixtureContent {
+  display: flex;
+  align-items: center;
+  background: var(--sport-fixture-content-backgroundColor, #fff);
+}
+
+.fixtureContent_details {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  border-right: 1px solid #dedee0;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .fixtureContent_details {
+    width: 104px;
+  }
+}
+
+.fixtureContent_teamdata {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 0 16px 8px;
+  flex: 1;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .fixtureContent_teamdata {
+    padding: 16px 0 16px 16px;
+  }
+}
+
+.fixtureContent_teamdata--no-pointer {
+  cursor: auto;
+}
+
+.fixtureContent--even {
+  background: var(--sport-fixture-content-even-backgroundColor, #f8f8f9);
+}
+
+/* ---- Fixture Team ---- */
+.fixtureTeam {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fixtureTeam_teams {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.fixtureTeam_team {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.fixtureTeam_teamImgFallback {
+  background-color: #eee;
+  width: 24px;
+  height: 24px;
+}
+
+.fixtureTeam_teamImg {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.fixtureTeam_teamname {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--sport-fixture-teamname-fontColor, #010414);
+}
+
+@media screen and (min-width: 200px) and (max-width: 480px) {
+  .fixtureTeam_teamname {
+    max-width: 180px;
+  }
+}
+
+@media (min-width: 768px) {
+  .fixtureTeam_teamname {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.fixtureTeam_teamname--win {
+  font-weight: 700;
+}
+
+.fixtureTeam_teamname--lose {
+  color: var(--sport-fixture-teamname-lose-fontColor, #78787a);
+}
+
+.fixtureTeam_score {
+  display: flex;
+  align-items: center;
+}
+
+.fixtureTeam_scorebox {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--sport-fixture-scorebox-fontColor, #010414);
+}
+
+.fixtureTeam_scorebox--win,
+.fixtureTeam_scorebox--roundwin {
+  font-weight: 700;
+}
+
+.fixtureTeam_scorebox--lose,
+.fixtureTeam_scorebox--roundlose {
+  color: var(--sport-fixture-scorebox-lose-fontColor, #78787a);
+}
+
+@media (min-width: 768px) {
+  .fixtureTeam_scorebox {
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.fixtureTeam_scoreindicator {
+  width: 8px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.fixtureTeam_scoreindicator--win {
+  justify-content: flex-end;
+}
+
+.fixtureTeam_scoreindicator--win::after {
+  display: block;
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 4px 6.9px 4px;
+  border-color: transparent transparent
+    var(--sport-fixture-win-indicator-background, #010414) transparent;
+  transform: rotate(-90deg);
+}
+
+@media (min-width: 768px) {
+  .fixtureTeam_scoreindicator {
+    width: 16px;
+    height: 24px;
+  }
+}
+
+/* ---- Fixture Detail ---- */
+.fixtureDetail_text {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 700;
+  color: var(--sport-fixture-detail-text-fontColor, #484849);
+  text-align: center;
+  line-height: 16px;
+}
+
+@media (min-width: 768px) {
+  .fixtureDetail_text {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+.fixtureDetail_text--ongoing {
+  color: var(--sport-fixture-detail-text-ongoing-fontColor, #e71d10);
+}
+
+.fixtureDetail_tag {
+  background: var(--sport-fixture-detail-tag-backgroundColor, #1473e6);
+  color: var(--sport-fixture-detail-tag-fontColor, #fff);
+  text-transform: uppercase;
+  padding: 2px 4px;
+  border-radius: 2px;
+  white-space: nowrap;
+  line-height: 14px;
+  border-radius: 2px;
+}
+
+.fixtureDetail_tag > .fixtureDetail_text {
+  color: var(--sport-fixture-detail-tag-fontColor, #fff);
+}
+
+.fixtureDetail_tag--fulltime {
+  --tag-backgroundColor: var(
+    --sport-fixture-detail-tag-backgroundColor,
+    #1473e6
+  );
+}
+
+.fixtureDetail_tag--ongoing {
+  --tag-backgroundColor: var(
+    --sport-fixture-detail-tag-ongoing-backgroundColor,
+    #e71d10
+  );
+}
+
+/* ---- Fixture Channels ---- */
+.fixtureChannels {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.fixtureChannels_img {
+  width: auto;
+  height: 20px;
+  object-fit: contain;
+}
+
+.fixtureChannels_squareimg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ---- Top Fixture Details ---- */
+.topFixtureDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.topFixtureDetails_title {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .topFixtureDetails_title {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.topFixtureDetails_placeholder {
+  padding-right: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .topFixtureDetails_placeholder {
+    padding-right: 16px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+/* ---- Scoreboard Mode ---- */
+.fixtureContent--scoreboard {
+  background: var(--sport-fixture-content-scoreboard-backgroundColor, #08205c);
+  border-radius: 8px;
+  flex: 0 0 242px;
+}
+
+@media (min-width: 768px) {
+  .fixtureContent--scoreboard {
+    flex: 0 0 256px;
+  }
+}
+
+.fixtureContent--scoreboard .fixtureContent_teamdata {
+  padding: 8px 0 8px 8px;
+}
+
+@media (min-width: 768px) {
+  .fixtureContent--scoreboard .fixtureContent_teamdata {
+    padding: 16px 0 16px 16px;
+  }
+}
+
+.fixtureContent--scoreboard .topFixtureDetails_title {
+  color: var(--sport-fixture-content-scoreboard-fontColor, #fff);
+}
+
+.fixtureContent--scoreboard .fixtureTeam_teamname {
+  color: var(--sport-fixture-content-scoreboard-fontColor, #fff);
+  max-width: 142px !important;
+}
+
+@media (min-width: 768px) {
+  .fixtureContent--scoreboard .fixtureTeam_teamname {
+    max-width: 160px !important;
+  }
+}
+
+.fixtureContent--scoreboard .fixtureTeam_teamname--win {
+  font-weight: 700;
+}
+
+.fixtureContent--scoreboard .fixtureTeam_teamname--lose {
+  color: var(--sport-fixture-scoreboard-teamname-lose-fontColor, #ababad);
+}
+
+.fixtureContent--scoreboard .fixtureTeam_scorebox {
+  color: var(--sport-fixture-content-scoreboard-fontColor, #fff);
+}
+
+.fixtureContent--scoreboard .fixtureTeam_scorebox--win {
+  font-weight: 700;
+}
+
+.fixtureContent--scoreboard .fixtureTeam_scorebox--lose {
+  color: var(--sport-fixture-scoreboard-scorebox-lose-fontColor, #ababad);
+}
+
+.fixtureContent--scoreboard .fixtureTeam_scoreindicator--win::after {
+  border-color: transparent transparent
+    var(--sport-fixture-scoreboard-win-indicator-background, #fff) transparent;
+}
+
+.fixtureContent--scoreboard .fixtureDetail_text {
+  color: var(--sport-fixture-content-scoreboard-fontColor, #fff);
+}

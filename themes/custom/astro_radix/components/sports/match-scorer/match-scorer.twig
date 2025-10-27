@@ -1,0 +1,48 @@
+{% set score_type = {
+  Goal: '',
+  Penalty: '(P)',
+  "Own goal": '(OG)'
+} %}
+
+<div class="scoreboard">
+  <ul class="scoreboard_list scoreboard_list__home">
+    {% for score_key, score_content in homeScoreList %}
+      <li>
+        <div>
+          <span>
+            {% for goal_key, goal_content in score_content.goals %}
+              {% set score_goal_type = score_type[goal_content.type] %}
+              <span>{{ goal_content.time}}’ {{ score_goal_type }}</span>
+            {% endfor %}
+          </span>
+          <span>{{ score_content.playerName }}</span>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div class="scoreboard_logo">
+    <img
+      src="https://de-digital-fortress-img-assets.eco.astro.com.my/prod/da3b8c1c20a27b737de7b70141672f08.png"
+      alt="match-details-football-logo"
+      width="20"
+      height="20"
+    />
+  </div>
+
+  <ul class="scoreboard_list scoreboard_list__away">
+    {% for score_key, score_content in awayScoreList %}
+      <li>
+        <div>
+          <span>{{ score_content.playerName }}</span>
+          <span>
+            {% for goal_key, goal_content in score_content.goals %}
+              {% set score_goal_type = score_type[goal_content.type] %}
+              <span>{{ goal_content.time}}’ {{ score_goal_type }}</span>
+            {% endfor %}
+          </span>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

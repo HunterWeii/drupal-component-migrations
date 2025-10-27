@@ -1,0 +1,21 @@
+name: "Match Statistic"
+description: "Match Static table to show sport data"
+status: stable
+props:
+  homeTeam:
+    type: object
+    properties:
+      cornerKicks: { type: number }
+      fouls: { type: number }
+      freekicks: { type: number }
+      offsides: { type: number }
+      passes: { type: number }
+      passesAccuracy: { type: number }
+      possession: { type: number }
+      redCards: { type: number }
+      shots: { type: number }
+      shotsOnTarget: { type: number }
+      tackles: { type: number }
+      yellowCards: { type: number }
+  awayTeam:
+    $ref: "#/props/homeTeam/properties"

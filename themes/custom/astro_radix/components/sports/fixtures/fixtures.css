@@ -1,0 +1,16 @@
+.sa-fixture {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #dedee0;
+}
+
+.sa-fixture > .fixtureHeader ~ .fixtureGroup > .fixtureGroup_header {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.sa-fixture > .fixtureHeader ~ .fixtureGroup > .fixtureGroup_content {
+  border: unset;
+  border-bottom-left-radius: unset;
+  border-bottom-right-radius: unset;
+}

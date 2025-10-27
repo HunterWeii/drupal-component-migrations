@@ -1,0 +1,25 @@
+name: "Match Scorer"
+description: "Match Scorer to show list of scorer"
+status: stable
+props:
+  homeScoreList:
+    type: array
+    items:
+      type: object
+      properties:
+        playerId:
+          type: string
+        playerName:
+          type: string
+        goals:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum: ["Goal", "Penalty", "Own goal"]
+              time:
+                type: string
+  awayScoreList:
+    $ref: "#/props/homeScoreList"
