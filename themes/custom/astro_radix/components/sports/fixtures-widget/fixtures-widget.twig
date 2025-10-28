@@ -1,22 +1,21 @@
 <div class="sa-fixture-matchwidget">
   {# @todo: sponsorconfig  #}
-
   {# widget content #}
   <div class="sa-fixture-matchwidget_content">
     {% embed "astro_radix:title-wrapper" with {
-      title: 'Upcoming Matches',
-      showBottomLink: true,
-      bottomLinkProps: {
-        text: 'See More'
-      }
+      title: titleWrapperProps.title ,
+      showBottomLink: titleWrapperProps.showBottomLink ,
+      bottomLinkProps: titleWrapperProps.bottomLinkProps
     }%}
       {% block title_content %}
         <div class="sa-fixture-matchwidget_fixtureContainer">
-          {% include "astro_radix:fixtures" with {} %}
-
-          {# {% include "astro_radix:empty-content" with {
-            message: 'No Upcoming Match'
-          } %} #}
+          {% if fixture is defined %}
+            {% include "astro_radix:fixtures" with fixture %}
+          {% else %}
+            {% include "astro_radix:empty-content" with {
+              message: 'No Upcoming Match'
+            } %}
+          {% endif %}
         </div>
       {% endblock %}
     {% endembed %}

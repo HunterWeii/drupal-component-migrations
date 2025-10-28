@@ -1,25 +1,25 @@
-{% set showFixtureHeaderMatchDetail = true %}
-{% set showFixtureGroupHeader = true %}
-{% set showFixtureGroupLabel = false %}
-{% set showFixtureContentDetails = true %}
-{% set showTopFixtureDetails = false %}
-{% set isMatchNotStarted = false %}
+{# variables #}
+{% set fixtureHeaderMatchDetail = fixtureHeader.fixtureHeaderMatchDetail %}
+
+{# state #}
+{% set showFixtureHeaderMatchDetail = fixtureHeaderMatchDetail is defined %}
+{% set showFixtureContentDetails = fixtureConfig.showFixtureContentDetails ?? true %}
+{% set showTopFixtureDetails = fixtureConfig.showTopFixtureDetails ?? false %}
 {% set showFixtureContentDetailsAsTag = false %}
-{% set isMatchEnd = true %}
-{% set isMatchOnGoing = false %}
+
 
 <div class="sa-fixture">
   {# fixture header #}
-  <div class="fixtureHeader">
+  <div class="fixtureHeader" style="{{ fixtureHeader.fixtureHeaderStyle }}">
     {% if showFixtureHeaderMatchDetail %}
       <div class="fixtureHeaderMatchDetail">
         <div class="fixtureHeaderMatchDetail_match">
           <img
             class="fixtureHeaderMatchDetail_match_avatar"
-            src="https://de-digital-fortress-img-assets.eco.astro.com.my/prod/b74e136d71d7092edc6e106b8e8683eb.png"
-            alt="Team logo"
-            width="56"
-            height="56"
+            src="{{ fixtureHeaderMatchDetail.competitionLogo.src }}"
+            alt="{{ fixtureHeaderMatchDetail.competitionLogo.alt }}"
+            width="{{ fixtureHeaderMatchDetail.competitionLogo.width }}"
+            height="{{ fixtureHeaderMatchDetail.competitionLogo.height }}"
             style="display: inline-block;"
           />
           <span
@@ -28,154 +28,191 @@
           ></span>
           <div>
             <div class="fixtureHeaderMatchDetail_match_title">
-              English Premier League
+              {{ fixtureHeaderMatchDetail.competitionName }}
             </div>
             <div class="fixtureHeaderMatchDetail_match_subtitle">
-              Gameweek 10 of 38
+              {{ fixtureHeader.fixtureHeaderTitle }}
             </div>
           </div>
         </div>
-        <a
-          class="fixtureHeaderMatchDetail_link"
-          href="https://example.com/competition"
-          target="_blank"
-        >
-          <i class="fixtureHeaderMatchDetail_link_icon fa fa-chevron-right">
-            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" class="fixtureHeaderMatchDetail_link_icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
-          </i>
-        </a>
+
+        {% if fixtureHeaderMatchDetail.competitionLink is defined %}
+          <a
+            class="fixtureHeaderMatchDetail_link"
+            href="{{ fixtureHeaderMatchDetail.competitionLink.href }}"
+            target="{{ fixtureHeaderMatchDetail.competitionLink.isExternal ? '_blank' : '_self' }}"
+          >
+            <i class="fixtureHeaderMatchDetail_link_icon fa fa-chevron-right">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" class="fixtureHeaderMatchDetail_link_icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
+            </i>
+          </a>
+        {% endif %}
       </div>
     {% else %}
-      <div class="fixtureHeader_text">Gameweek 10 of 38</div>
+      <div class="fixtureHeader_text">{{ fixtureHeader.fixtureHeaderTitle }}</div>
     {% endif %}
   </div>
 
-  {# fixture group #}
-  <div class="fixtureGroup" data-component-id="fixture-group-1">
-    {% if showFixtureGroupHeader %}
-      <div class="fixtureGroup_header">Saturday, 01 Nov</div>
-    {% endif %}
-    
-    {% if showFixtureGroupLabel %}
-      <div class="fixtureGroup_groupLabel">Quarter Finals</div>
-    {% endif %}
-    
-    <div class="fixtureGroup_content">
-      {# Array of Fixtures Content #}
-      <div class="fixtureContent" data-fixture-matchdatetime="">
-        {% set fixture_tag %}
-          <span class="{{ showFixtureContentDetailsAsTag ? 'fixtureDetail_tag' : '' }} {{ isMatchEnd ? 'fixtureDetail_tag--fulltime' : ''}} {{ isMatchOnGoing ? 'fixtureDetail_tag--ongoing' : '' }}">
-            <span class="fixtureDetail_text {{ isMatchOngoing ? 'fixtureDetail_text--ongoing' : ''}}">
-              <span>FT</span>
-              {% if isMatchOnGoing %}
-                <span class="animation__blink">’</span>
-              {% endif %}
-            </span>
-          </span>
-        {% endset %}
+  {# Array of fixture group #}
+  {% for fixture_group in fixtureGroups %}
+    {% set showFixtureGroupHeader = fixture_group.showGroupHeader %}
+    {% set showFixtureGroupLabel = fixture_group.groupLabel != '' %}
 
-        {% if showFixtureContentDetails %}
-          <div class="fixtureContent_details">
-            {# fixture time details #}
-            {% if isMatchNotStarted %}
-              <span class="fixtureDetail_text">11:00 PM</span>
-            {% else %}
-              {{ fixture_tag }}
+    <div class="fixtureGroup" data-component-id="fixture-group-1">
+      {% if showFixtureGroupHeader %}
+        <div class="fixtureGroup_header">{{ fixture_group.groupTitle }}</div>
+      {% endif %}
+      
+      {% if showFixtureGroupLabel %}
+        <div class="fixtureGroup_groupLabel">{{ fixture_group.groupLabel }}</div>
+      {% endif %}
+      
+      <div class="fixtureGroup_content">
+        {% for fixture_data in fixture_group.fixtures %}
+          {% set isMatchNotStarted = fixture_data.isMatchNotStarted %}
+          {% set isMatchEnd = fixture_data.isMatchEnd %}
+          {% set isMatchOnGoing = fixture_data.isMatchOngoing %}
+
+          <div class="fixtureContent" data-fixture-matchdatetime="">
+            {% set fixture_tag %}
+              <span class="{{ showFixtureContentDetailsAsTag ? 'fixtureDetail_tag' : '' }} {{ isMatchEnd ? 'fixtureDetail_tag--fulltime' : ''}} {{ isMatchOnGoing ? 'fixtureDetail_tag--ongoing' : '' }}">
+                <span class="fixtureDetail_text {{ isMatchOngoing ? 'fixtureDetail_text--ongoing' : ''}}">
+                  <span>{{ fixture_data.matchLive }}</span>
+                  {% if isMatchOnGoing %}
+                    <span class="animation__blink">’</span>
+                  {% endif %}
+                </span>
+              </span>
+            {% endset %}
+
+            {% if showFixtureContentDetails %}
+              <div class="fixtureContent_details">
+                {% if isMatchNotStarted %}
+                  <span class="fixtureDetail_text">{{ fixture_data.matchTime }}</span>
+                {% else %}
+                  {{ fixture_tag }}
+                {% endif %}
+
+                {# fixture channel #}
+                {% if fixture_data.channels is defined %}
+                  <div class="fixtureChannels">
+                    {% for fixture_channel in fixture_data.channels %}
+                      {% set channel_logo = fixture_channel.channelLogo %}
+                      {% set channel_img_classname = channel_logo.width == channel_logo.height ? 'fixtureChannels_squareimg' : 'fixtureChannels_img' %}
+
+                      <a href="{{ fixture_channel.href}}" target="{{ fixture_channel.isExternal ? '_blank' : '_self' }}">
+                        <img
+                          class="{{ channel_img_classname }}"
+                          src="{{ channel_logo.src }}"
+                          alt="{{ channel_logo.alt }}"
+                          width="{{ channel_logo.width }}"
+                          height="{{ channel_logo.height }}"
+                        />
+                      </a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
             {% endif %}
 
-            {# fixture channel #}
-            <div class="fixtureChannels">
-              <a href="https://example.com/channel2" target="_self">
-                <img
-                  class="fixtureChannels_squareimg"
-                  src="https://de-digital-fortress-stg-assets.eco.astro.com.my/staging/a1e5c4229289adaa4999d85cb7353f9a.png"
-                  alt="channel-logo"
-                  width="32"
-                  height="32"
-                />
-              </a>
-              <a href="https://example.com/channel3" target="_blank">
-                <img
-                  class="fixtureChannels_img"
-                  src="https://de-digital-fortress-stg-assets.eco.astro.com.my/staging/047bac73ee945fe3e1d387f29a15c556.png"
-                  alt="channel-logo"
-                  width="40"
-                  height="24"
-                />
-              </a>
-            </div>
-          </div>
-        {% endif %}
+            <div class="fixtureContent_teamdata {{ fixture_data.matchLink is defined ? '' : 'fixtureContent_teamdata--no-pointer' }}">
+              {% if showTopFixtureDetails %}
+                <div class="topFixtureDetails">
+                  <span class="topFixtureDetails_title">{{ fixture_data.matchFormatDateTime }}</span>
+                  <span class="topFixtureDetails_placeholder">
+                    {{ fixture_tag }}
+                  </span>
+                </div>
+              {% endif %}
+              
+              {# home #}
+              <div class="fixtureTeam">
+                <div class="fixtureTeam_teams">
+                  {% for team_data in fixture_data.homeTeam.team %}
+                    {% set team_logo = fixture_data.homeTeam.teamLogo[loop.index0] %}
+                    {% set team_status_class = fixture_data.homeTeam.scoreboxIndicator == 'win' ? 'fixtureTeam_teamname--win' : 'fixtureTeam_teamname--lose'  %}
 
-        <div class="fixtureContent_teamdata fixtureContent_teamdata--no-pointer">
-          {% if showTopFixtureDetails %}
-            <div class="topFixtureDetails">
-              <span class="topFixtureDetails_title">Rabu, 17 Sept</span>
-              <span class="topFixtureDetails_placeholder">
-                {{ fixture_tag }}
-              </span>
-            </div>
-          {% endif %}
-          
-          {# home #}
-          <div class="fixtureTeam">
-            <div class="fixtureTeam_teams">
-              {# array #}
-              <div class="fixtureTeam_team">
-                <img
-                  class="fixtureTeam_teamImg"
-                  src="https://img.thesports.com/football/team/d39ce586fd7278342dde33b3090b3f75.png"
-                  alt="team-logo"
-                  width="40"
-                  height="40"
-                  style="display: inline;"
-                />
-                <span
-                  class="fixtureTeam_teamImgFallback"
-                  style="width: 40px; height: 40px; display: none;"
-                ></span>
-                <span class="fixtureTeam_teamName">Manchester United</span>
+                    <div class="fixtureTeam_team">
+                      <img
+                        class="fixtureTeam_teamImg"
+                        src="{{ team_logo.src }}"
+                        alt="{{ team_logo.alt}}"
+                        width="{{ team_logo.width }}"
+                        height="{{ team_logo.height }}"
+                        style="display: inline;"
+                      />
+                      <span
+                        class="fixtureTeam_teamImgFallback"
+                        style="width: 40px; height: 40px; display: none;"
+                      ></span>
+                      <span class="fixtureTeam_teamName {{ team_status_class}}">{{team_data}}</span>
+                    </div>
+                  {% endfor %}
+                </div>
+
+                <div class="fixtureTeam_score">
+                  {% for score_data in fixture_data.homeTeam.scores %}
+                    {% set roundwin_classname = score_data.roundIndicator == 'win' ? 'fixtureTeam_scorebox--roundwin' : 'fixtureTeam_scorebox--roundlose' %}
+
+                    <div class="fixtureTeam_scorebox {{ roundwin_classname }}">
+                      {{ score_data.score }}
+                      {% if score_data.type == 'penalty' %}
+                        <span>(P)</span>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                  
+                  <!-- ScoreboxIndicator placeholder -->              
+                  <div class="fixtureTeam_scoreindicator {{ fixture_data.homeTeam.scoreboxIndicator == 'win' ? 'fixtureTeam_scoreindicator--win' : ''}}"></div>
+                </div>
               </div>
-            </div>
 
-            <div class="fixtureTeam_score">
-              {# array #}
-              <div class="fixtureTeam_scorebox fixtureTeam_scorebox--roundwin">4</div>
+              {# away #}
+              <div class="fixtureTeam">
+                <div class="fixtureTeam_teams">
+                  {# array #}
+                  {% for team_data in fixture_data.awayTeam.team %}
+                    {% set team_logo = fixture_data.awayTeam.teamLogo[loop.index0] %}
+                    {% set team_status_class = fixture_data.awayTeam.scoreboxIndicator == 'win' ? 'fixtureTeam_teamname--win' : 'fixtureTeam_teamname--lose'  %}
 
-              <!-- ScoreboxIndicator placeholder -->
-              <div class="fixtureTeam_scoreindicator fixtureTeam_scoreindicator--win"></div>
-            </div>
-          </div>
+                    <div class="fixtureTeam_team">
+                      <img
+                        class="fixtureTeam_teamImg"
+                        src="{{ team_logo.src }}"
+                        alt="{{ team_logo.alt}}"
+                        width="{{ team_logo.width }}"
+                        height="{{ team_logo.height }}"
+                        style="display: inline;"
+                      />
+                      <span
+                        class="fixtureTeam_teamImgFallback"
+                        style="width: 40px; height: 40px; display: none;"
+                      ></span>
+                      <span class="fixtureTeam_teamName {{ team_status_class }}">{{team_data}}</span>
+                    </div>
+                  {% endfor %}
+                </div>
 
-          {# away #}
-          <div class="fixtureTeam">
-            <div class="fixtureTeam_teams">
-              <div class="fixtureTeam_team">
-                <img
-                  class="fixtureTeam_teamImg"
-                  src="https://img.thesports.com/football/team/9b43a690d5a09f1e319f036821e8e1d3.png"
-                  alt="team-logo"
-                  width="40"
-                  height="40"
-                  style="display: inline;"
-                />
-                <span
-                  class="fixtureTeam_teamImgFallback"
-                  style="width: 40px; height: 40px; display: none;"
-                ></span>
-                <span class="fixtureTeam_teamName">Brighton Hove Albion</span>
+                <div class="fixtureTeam_score">
+                  {% for score_data in fixture_data.awayTeam.scores %}
+                    {% set roundwin_classname = score_data.roundIndicator == 'win' ? 'fixtureTeam_scorebox--roundwin' : 'fixtureTeam_scorebox--roundlose' %}
+
+                    <div class="fixtureTeam_scorebox {{ roundwin_classname }}">
+                      {{ score_data.score }}
+                      {% if score_data.type == 'penalty' %}
+                        <span>(P)</span>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                  
+                  <!-- ScoreboxIndicator placeholder -->              
+                  <div class="fixtureTeam_scoreindicator {{ fixture_data.awayTeam.scoreboxIndicator == 'win' ? 'fixtureTeam_scoreindicator--win' : ''}}"></div>
+                </div>
               </div>
-            </div>
-
-            <div class="fixtureTeam_score">
-              <div class="fixtureTeam_scorebox fixtureTeam_scorebox--roundlose">2</div>
-
-              <!-- ScoreboxIndicator placeholder -->
-              <div class="fixtureTeam_scoreindicator"></div>
-            </div>
+            </div>  
           </div>
-        </div>  
+        {% endfor %}
       </div>
     </div>
-  </div>
+  {% endfor %}
 </div>

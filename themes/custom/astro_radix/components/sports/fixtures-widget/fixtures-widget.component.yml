@@ -24,6 +24,3 @@ props:
             enums: ["_blank", "_self"]
           text:
             type: string
-  fixtures:
-    type: array
-    default: []

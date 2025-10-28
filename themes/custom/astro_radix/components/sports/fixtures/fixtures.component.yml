@@ -51,9 +51,6 @@ props:
                 properties:
                   matchDetailsLink: { type: string }
                   isExternal: { type: boolean }
-                  gaParams:
-                    type: object
-                    additionalProperties: { type: string }
               awayTeam:
                 type: object
                 title: "Fixture Content Team"
@@ -109,7 +106,9 @@ props:
                         height: { type: number }
               hasScore: { type: boolean }
               isMatchEnd: { type: boolean }
-  fixtureContentConfig:
+              isMatchOngoing: { type: boolean }
+              isMatchNotStarted: { type: boolean }
+  fixtureConfig:
     type: object
     properties:
       showFixtureContentDetails:
