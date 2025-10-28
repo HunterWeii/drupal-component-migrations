@@ -3,7 +3,7 @@ import "../fixtures-header.css";
 import "../fixtures-group.css";
 import "../fixtures-content.css";
 
-import { fixtureBaseConfig } from "./mock";
+import { fixtureBaseConfig, fixtureBadmintonConfig } from "./mock";
 
 import fixturesTemplate from "@components/sports/fixtures/fixtures.twig";
 
@@ -15,4 +15,8 @@ export const Default = {
   render: () => {
     return fixturesTemplate(fixtureBaseConfig);
   },
+};
+
+export const BadmintonFixture = {
+  render: () => fixturesTemplate(fixtureBadmintonConfig),
 };

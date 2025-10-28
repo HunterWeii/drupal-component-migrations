@@ -115,3 +115,112 @@ export const fixtureBaseConfig = {
     },
   ],
 };
+
+export const fixtureBadmintonConfig = {
+  fixtureConfig: {
+    showFixtureContentDetails: true,
+    showTopFixtureDetails: false,
+    scoreboard: false,
+    showFixtureContentDetailsAsTag: false,
+  },
+  fixtureHeader: {
+    fixtureHeaderMatchDetail: {
+      competitionLogo: {
+        src: "https://de-digital-fortress-img-assets.eco.astro.com.my/prod/8d2c7d8dd216ceeeec30c09e7e171c00.png",
+        alt: "victor-denmark-logo",
+        width: "56",
+        height: "56",
+      },
+      competitionName: "VICTOR Denmark Open, MD",
+    },
+    fixtureHeaderTitle: "Semifinals • Court 1 • MD",
+    fixtureHeaderStyle: "",
+  },
+  fixtureGroups: [
+    {
+      groupTitle: "Saturday, 01 Nov",
+      groupLabel: "",
+      showGroupHeader: true,
+      fixtures: [
+        {
+          matchId: "1",
+          matchLive: "END",
+          matchTime: "11:00 PM",
+          matchDateTime: "",
+          matchFormatDateTime: "Rabu, 17 Sept",
+          awayTeam: {
+            isMatchEnd: true,
+            team: ["Wang Chang", "Liang Weikeng"],
+            teamShortName: ["WC", "LWK"],
+            teamLogo: [
+              {
+                src: "https://img.thesports.com/country/chn.png",
+                alt: "bri-logo",
+                width: 40,
+                height: 20,
+              },
+              {
+                src: "https://img.thesports.com/country/chn.png",
+                alt: "bri-logo",
+                width: 40,
+                height: 20,
+              },
+            ],
+            scores: [
+              {
+                type: "goal",
+                score: "15",
+                roundIndicator: "lose",
+              },
+              {
+                type: "goal",
+                score: "28",
+                roundIndicator: "lose",
+              },
+            ],
+            scoreboxIndicator: "lose",
+            useInternationalFlagSize: true,
+          },
+          homeTeam: {
+            isMatchEnd: true,
+            team: ["Fajar Alfian", "Muhammad Shohibul Fikri"],
+            teamShortName: ["FA", "SF"],
+            teamLogo: [
+              {
+                src: "https://img.thesports.com/country/idn.png",
+                alt: "indo-logo",
+                width: 40,
+                height: 20,
+              },
+              {
+                src: "https://img.thesports.com/country/idn.png",
+                alt: "indo-logo",
+                width: 40,
+                height: 20,
+              },
+            ],
+            scores: [
+              {
+                type: "goal",
+                score: "21",
+                roundIndicator: "win",
+              },
+              {
+                type: "goal",
+                score: "21",
+                roundIndicator: "win",
+              },
+            ],
+            scoreboxIndicator: "win",
+            useInternationalFlagSize: true,
+          },
+          channels: [],
+          hasScore: true,
+          isMatchEnd: true,
+          isMatchOngoing: false,
+          isMatchNotStarted: false,
+        },
+      ],
+    },
+  ],
+};
