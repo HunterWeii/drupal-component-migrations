@@ -1,0 +1,94 @@
+name: "Match Timeline"
+description: "Match Timeline to show event during the match"
+status: stable
+props:
+  classname:
+    type: string
+  eventProps:
+    type: object
+    properties:
+      eventType:
+        type: string
+        enum: ["goal", "redcard", "yellowcard", "kickoff", "substitution"]
+      eventMatchTime:
+        type: string
+      eventDescription:
+        type: string
+      classname:
+        type: string
+  scoreStatsProps:
+    type: object
+    properties:
+      homeTeamName:
+        type: string
+      homeTeamScore:
+        type: string
+      awayTeamName:
+        type: string
+      awayTeamScore:
+        type: string
+  cardEventProps:
+    type: object
+    properties:
+      header: string
+      playerClubName: string
+      playerName: string
+      playerPosition: string
+      playerJerseyNo: string
+      playerPicture: string
+      playerAssist: string
+      footer: string
+      clubAvatarProps:
+        type: object
+        properties:
+          src:
+            type: string
+          alt:
+            type: string
+          outline:
+            type: string
+            enums: ["primary", "secondary", "none"]
+      avatarProps:
+        type: object
+        properties:
+          src:
+            type: string
+          alt:
+            type: string
+          outline:
+            type: string
+            enums: ["primary", "secondary", "none"]
+  matchEndEventProps:
+    type: object
+    properties:
+      kickoffDescription:
+        type: string
+  matchStartEventProps:
+    type: object
+    properties:
+      kickoffDescription:
+        type: string
+      clubAvatarProps:
+        type: object
+        properties:
+          src:
+            type: string
+          alt:
+            type: string
+          outline:
+            type: string
+            enums: ["primary", "secondary", "none"]
+  substitutionEventProps:
+    type: object
+    properties:
+      players:
+        type: array
+        items:
+          type: object
+          properties:
+            $ref: "#/props/cardEventProps/properties"
+  goalEventProps:
+    type: object
+    properties:
+      playerProps:
+        $ref: "#/props/cardEventProps/properties"

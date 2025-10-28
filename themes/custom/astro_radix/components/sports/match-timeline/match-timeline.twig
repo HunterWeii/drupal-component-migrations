@@ -1,0 +1,69 @@
+{% set showEventMatchTime = eventProps.eventMatchTime != '' %}
+{% set showSubHeader = scoreStatsProps is defined %}
+{% set event_type = {
+  goal: 'goal',
+  redcard: 'redcard',
+  yellowcard: 'yellowcard',
+  kickoff: 'kickoff',
+  substitution: 'substitution'
+}%}
+
+<div class="eventCard {{ classname }}">
+  {# header #}
+  <div class="eventCard_headerContent eventCardHeader">
+    {# matchtime #}
+    {% if showEventMatchTime %}
+      <span class="eventCardHeader_time">{{ eventProps.eventMatchTime }}</span>
+    {% endif %}
+    
+    {# event image #}
+    <span class="eventCardHeader_img {{ event_type[eventProps.eventType] }}"></span>
+
+    {# event desc #}
+    <span class="eventCard_text">{{ eventProps.eventDescription }}</span>
+  </div>
+
+  {# sub header #}
+  {% if showSubHeader %}
+    <div class="eventCard_subHeader">
+      <div class="goal_home_team">{{ scoreStatsProps.homeTeamName }}</div> 
+      <div class="goal_home_team_score">{{ scoreStatsProps.homeTeamScore }}</div> 
+      <div class="goal_away_team_score">{{ scoreStatsProps.awayTeamScore }}</div>
+      <div class="goal_away_team">{{ scoreStatsProps.awayTeamName }}</div>
+    </div>
+  {% endif %}
+  
+  {# content #}
+  <div class="eventCard_content">
+    {% if cardEventProps is defined %}
+      {% include "astro_radix:player-card" with cardEventProps %}
+    {% endif %}
+
+    {% if matchEndEventProps is defined %}
+      <span class="eventCard_text">{{ matchEndEventProps.kickoffDescription }}</span>
+    {% endif %}
+
+    {% if matchStartEventProps is defined %}
+      <div class="sportclub_avatar">
+        {% include "astro_radix:avatar" with {
+          classname: 'player_clubImg sportclub_avatar_img',
+          src: matchStartEventProps.clubAvatarProps.src,
+          alt: matchStartEventProps.clubAvatarProps.alt,
+          outline: matchStartEventProps.clubAvatarProps.outline,
+          showFloatContainer: false
+        }%}
+        <span class="eventCard_text">{{ matchStartEventProps.kickoffDescription }}</span>
+      </div>
+    {% endif %}
+
+    {% if substitutionEventProps is defined %}
+      {% for sub_player_props in substitutionEventProps.players %}
+        {% include "astro_radix:player-card" with sub_player_props %}
+      {% endfor %}
+    {% endif %}
+
+    {% if goalEventProps is defined %}
+      {% include "astro_radix:player-card" with goalEventProps.playerProps %}
+    {% endif %}
+  </div>
+</div>

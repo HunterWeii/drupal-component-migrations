@@ -1,0 +1,56 @@
+/* avatar */
+
+.astro_avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  border-radius: 50%;
+  position: relative;
+  width: var(--sport-avatar-size);
+  height: var(--sport-avatar-size);
+}
+
+@media (max-width: 767px) {
+  .astro_avatar {
+    --sport-avatar-size: 56px;
+  }
+}
+
+.astro_avatar_default {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.astro_avatar_float_container {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  outline: #e5e5e5 2px solid;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  outline: 1px solid #e5e5e5;
+}
+
+.astro_avatar.outline_primary {
+  outline: 2px solid var(--sport-football-home-color, #1d7fe3);
+}
+
+.astro_avatar.outline_secondary {
+  outline: 2px solid var(--sport-football-away-color, #863ce2);
+}
+
+.astro_avatar.outline_none {
+  border: none;
+}
+
+.astro_avatar > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}

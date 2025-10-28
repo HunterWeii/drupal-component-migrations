@@ -1,0 +1,40 @@
+<div class="player">
+  <div class="player_container">
+    {% if header != '' %}
+      <div class="player_header">{{ header }}</div>
+    {% endif %}
+    
+    <div class="player_name">{{ playerName }}</div>
+
+    {% if playerAssist != '' %}
+      <div class="player_assist">(Assist) {{ playerAssist }}</div>
+    {% endif %}
+    
+    <div class="sportclub_avatar">
+      {# avatar #}
+      {% include "astro_radix:avatar" with {
+        classname: 'player_clubImg sportclub_avatar_img',
+        src: clubAvatarProps.src,
+        alt: clubAvatarProps.alt,
+        outline: clubAvatarProps.outline,
+        showFloatContainer: false
+      }%}
+
+      <span class="player_clubName">{{ playerClubName }}</span>
+      <span class="player_dots"></span>
+      <span class="player_position">{{ playerPosition }} #{{ playerJerseyNo }}</span>
+    </div>
+
+    {% if footer != '' %}
+      <div class="player_footer">{{ footer }}</div>
+    {% endif %}
+  </div>
+  
+  {# avatar #}
+  {% include "astro_radix:avatar" with {
+    src: avatarProps.src,
+    alt: avatarProps.alt,
+    outline: avatarProps.outline,
+    showFloatContainer: false
+  }%}
+</div>

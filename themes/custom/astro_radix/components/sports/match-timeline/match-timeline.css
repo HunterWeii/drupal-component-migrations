@@ -1,0 +1,318 @@
+/* sport event cards */
+.eventCard__round:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.eventCard_headerContent {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: var(--sport-event-card-header-background, #f5f5f5);
+  background-size: cover;
+  border: var(--sport-event-card-border, 1px solid #e5e5e5);
+  border-bottom: unset;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .eventCard_headerContent {
+    padding: 16px 24px;
+  }
+}
+
+.eventCard_content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: var(--sport-event-card-border, 1px solid #e5e5e5);
+  border-top: unset;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  --sport-avatar-size: 24px;
+}
+
+@media (min-width: 768px) {
+  .eventCard_content {
+    padding: 16px 24px;
+    --sport-avatar-size: 56px;
+  }
+}
+
+.eventCard_text {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.eventCard_subHeader {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.eventCardHeader {
+  color: var(--sport-event-card-header-fontColor, #000);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.eventCardHeader_img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.eventCardHeader_img.goal {
+  background-image: url("https://de-digital-fortress-img-assets.eco.astro.com.my/prod/abcf2306c8bab9c2b8a80d5c370973d1.png");
+}
+
+.eventCardHeader_img.redcard {
+  background-image: url("https://de-digital-fortress-img-assets.eco.astro.com.my/prod/f9864d595bd108c32cf17f53145cfa21.png");
+}
+
+.eventCardHeader_img.yellowcard {
+  background-image: url("https://de-digital-fortress-img-assets.eco.astro.com.my/prod/773ed231e029c28a8bb3d374801e3a14.png");
+}
+
+.eventCardHeader_img.kickoff {
+  background-image: url("https://de-digital-fortress-img-assets.eco.astro.com.my/prod/6df2d2f2555671126db0623762e86d98.png");
+}
+
+.eventCardHeader_img.substitution {
+  background-image: url("https://de-digital-fortress-img-assets.eco.astro.com.my/prod/02ada2f3667e12032cdc73899b8a5a6f.png");
+}
+
+.eventCardHeader_time {
+  display: block;
+  min-width: 24px;
+}
+
+.goal {
+  --sport-event-card-header-fontColor: #fff;
+}
+
+.goal .eventCardHeader {
+  padding: 0;
+  font-size: 16px;
+  line-height: 22px;
+  min-height: 38px;
+  gap: 8px;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .goal .eventCardHeader {
+    font-size: 20px;
+    line-height: 26px;
+    min-height: 58px;
+    gap: 16px;
+  }
+}
+
+.goal_home_team,
+.goal_away_team {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  color: var(--sport-event-card-goal-fontColor, #fff);
+}
+
+@media (min-width: 768px) {
+  .goal_home_team,
+  .goal_away_team {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.goal_home_team {
+  margin-right: 0;
+}
+
+@media (min-width: 768px) {
+  .goal_home_team {
+    margin-right: 8px;
+  }
+}
+
+.goal_away_team {
+  margin-right: 0;
+}
+
+@media (min-width: 768px) {
+  .goal_away_team {
+    margin-right: 8px;
+  }
+}
+
+.goal_home_team_score,
+.goal_away_team_score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: var(--sport-event-card-goal-team-score-background, #fff);
+  font-weight: 700;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@media (min-width: 768px) {
+  .goal_home_team_score,
+  .goal_away_team_score {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.goal__home .eventCardHeader {
+  background-image: url("https://de-digital-fortress-stg-assets.eco.astro.com.my/staging/9d62f2f3d67515c7653f0989d53545e9.svg");
+  border: var(--sport-event-card-goal-home-header-border, 1px solid #1d7fe3);
+  border-bottom: unset;
+}
+
+.goal__home .eventCard_subHeader {
+  background-color: var(
+    --sport-event-card-goal-home-subheader-background,
+    #1d7fe3
+  );
+}
+
+.goal__home .goal_home_team_score {
+  color: var(--sport-event-card-home-goal-home-team-score-fontColor, #1b6ed0);
+}
+
+.goal__home .goal_away_team {
+  color: var(--sport-event-card-home-goal-away-team-fontColor, #badbfb);
+}
+
+.goal__home .goal_away_team_score {
+  color: var(--sport-event-card-home-goal-away-team-fontColor, #badbfb);
+  background-color: var(
+    --sport-event-card-home-goal-away-team-background,
+    #3e9ef4
+  );
+}
+
+.goal__away .eventCardHeader {
+  background-image: url("https://de-digital-fortress-img-assets.eco.astro.com.my/prod/a181d04e21f95eed8a5270a28cedaa61.svg");
+  border: var(--sport-event-card-goal-away-header-border, 1px solid #863ce2);
+  border-bottom: unset;
+}
+
+.goal__away .eventCard_subHeader {
+  background-color: var(
+    --sport-event-card-goal-away-subheader-background,
+    #863ce2
+  );
+}
+
+.goal__away .goal_away_team_score {
+  color: var(--sport-event-card-away-goal-away-team-score-fontColor, #6b30b5);
+}
+
+.goal__away .goal_home_team_score {
+  color: var(--sport-event-card-away-goal-home-team-fontColor, #cfb1f3);
+  background-color: var(
+    --sport-event-card-away-goal-home-team-score-background,
+    #9e63e8
+  );
+}
+
+.goal__away .goal_home_team {
+  color: var(--sport-event-card-away-goal-home-team-fontColor, #cfb1f3);
+}
+
+/* sport player cards */
+
+.player {
+  display: flex;
+  align-items: flex-start;
+}
+
+.player_container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .player_clubImg {
+    --sport-avatar-size: 24px;
+  }
+}
+
+.player_header,
+.player_footer,
+.player_name {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+}
+
+.player_header,
+.player_footer {
+  font-size: 14px;
+  color: #3aab35;
+}
+
+.player_header.out {
+  color: #e53d46;
+}
+
+.player_dots {
+  display: block;
+  width: 4px;
+  height: 4px;
+  background-color: #86878b;
+  border-radius: 50%;
+}
+
+.player_clubName,
+.player_position {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #86878b;
+}
+
+.player_assist {
+  color: #86878b;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: -4px;
+}
+
+/* sport club avatar */
+.sportclub_avatar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sportclub_avatar_img {
+  width: 24px !important;
+  height: 24px !important;
+  outline: #e5e5e5 2px solid !important;
+}
+
+@media (min-width: 768px) {
+  .sportclub_avatar_img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}

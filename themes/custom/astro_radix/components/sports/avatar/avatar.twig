@@ -1,0 +1,22 @@
+{% set outline_classes = {
+  primary: 'outline_primary',
+  secondary: 'outline_secondary',
+  none: 'outline_one'
+}%}
+
+{% set outline_classname = outline_classes[outline] %}
+
+<div class="astro_avatar {{ outline_classname }} {{ classname }}">
+  <div class="astro_avatar_default" style="display:none;"></div>
+  <img 
+    src="{{ src }}" 
+    alt="{{ alt }}"
+    width={{ size ? size : '64px' }}
+    height={{ size ? size : '64px' }}
+  />
+  {% if showFloatContainer %}
+    <div class="astro_avatar_float_container">
+      {% block float_container_item %}{% endblock %}
+    </div>
+  {% endif %}
+</div>
